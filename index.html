@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <title>Audio-Reactive Maze</title>
+  </head>
+  <body>
+
+    <div id="minimap-wrapper" class="minimap-container">
+      <img id="debug-canvas" class="minimap-image" alt="Maze minimap" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" />
+      <div id="minimap-dot" class="minimap-dot"></div>
+    </div>
+
+    <div id="ui">
+      <div class="panel-header">
+        <input type="file" id="audio-input" accept="audio/*" />
+        <button id="btn-hide-ui" class="icon-btn" title="Hide panel">✕</button>
+      </div>
+
+      <div id="controls" style="display: none;">
+        <div class="control-row">
+          <label>Speed</label>
+          <input type="range" id="param-speed" min="30" max="240" />
+        </div>
+        <div class="control-row">
+          <label>Corridor</label>
+          <input type="range" id="param-width" min="3.0" max="24.0" step="1.5" />
+        </div>
+        <div class="control-row">
+          <label>Height</label>
+          <input type="range" id="param-height" min="4" max="72" step="2" />
+        </div>
+        <div class="control-row">
+          <label>Light</label>
+          <input type="range" id="param-light" min="0.00001" max="3.0" step="0.1" />
+        </div>
+        <div class="control-row">
+          <label>Camera</label>
+          <select id="param-cam-mode">
+            <option value="follow" selected>Follow</option>
+            <option value="autoturn">Auto-Turn</option>
+            <option value="thirdperson">3rd Person</option>
+            <option value="fixed">Fixed</option>
+            <option value="topdown">Top-Down</option>
+            <option value="free">Free</option>
+          </select>
+        </div>
+        <div class="control-row">
+          <label>Seed</label>
+          <input type="number" id="param-seed" />
+        </div>
+        <div class="control-row">
+          <label>Sensitivity</label>
+          <input type="range" id="param-sensitivity" min="0.5" max="5.0" step="0.1" />
+        </div>
+        <div class="control-row">
+          <label>Threshold</label>
+          <input type="range" id="param-peak-threshold" min="0.1" max="1.5" step="0.1" />
+        </div>
+        <div class="control-row">
+          <label>Beat Gap</label>
+          <input type="range" id="param-min-beat-spacing" min="0.03" max="0.50" step="0.01" />
+        </div>
+        <div class="control-row">
+          <label>Attack ms</label>
+          <input type="range" id="param-attack-ms" min="1" max="20" step="1" />
+        </div>
+        <div class="control-row">
+          <label>Release ms</label>
+          <input type="range" id="param-release-ms" min="20" max="200" step="5" />
+        </div>
+      </div>
+    </div>
+
+    <button id="btn-show-ui" class="floating-btn floating-btn-left" style="display:none;" title="Show menu">☰</button>
+    <button id="btn-show-minimap" class="floating-btn floating-btn-right" style="display:none;" title="Show minimap">🗺</button>
+    <button id="btn-hide-minimap" class="floating-btn floating-btn-minimap" title="Hide minimap">✕</button>
+
+    <div class="timeline-bar">
+      <input type="range" id="timeline-scrubber" min="0" max="1000" value="0" step="1" />
+      <div class="timeline-right">
+        <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" value="75" title="Volume" />
+        <button id="btn-scrubber-playpause" class="scrubber-btn" title="Play / Pause">▶</button>
+      </div>
+    </div>
+
+    <div id="loading" style="display: none;">
+      <p>Processing…</p>
+    </div>
+
+    <script src="./maze_audio.js"></script>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
