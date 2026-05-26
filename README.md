@@ -56,3 +56,8 @@ bash scripts/build.sh
 
 This runs the full pipeline: toolchain setup -> PD->WASM compilation -> TypeScript + Vite production build. Output lands in `dist/`.
 
+## Video Demo or [Try it live](https://dragos-florin-pojoga.github.io/TNM/)
+
+https://github.com/user-attachments/assets/80cfe9ae-08e2-453c-b81a-8941557d0fd0
+
+> Song used: https://music.youtube.com/watch?v=MN97kf49tYM
